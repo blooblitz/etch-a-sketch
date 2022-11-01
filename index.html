@@ -9,13 +9,25 @@
   </head>
   <body>
     <div class="main-flex-wrapper">
-        <div class="header"></div>
+        <div class="header">
+            <div class="header-button" id="dark-mode">Toggle Dark Mode</div>
+        </div>
         <div class="content">
-            <div class="draw-ui"></div>
-            <div class="draw-canvas"></div>
+            <div class="draw-ui">
+                <button class="reset">Reset</button>
+                <button class="color">Color</button>
+                <button class="Erase">Erase</button>
+                <button class="Size">Size</button>
+                <div class="slide-container">
+                    <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                    <p>Size: <span id="size"></span></p>
+                </div>
+            </div>
+            <div class="grid-draw-container">
+            </div>
         </div>
         <div class="footer">
-            <h3>Footer</h3>
+            <h3>Blooblitz 2022</h3>
         </div>
     </div>
 	<script src="javascript.js"></script>
