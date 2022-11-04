@@ -36,7 +36,21 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
+    background-color:   rgb(171, 180, 188);
+    border-radius: 10px;
+    box-shadow: 12px 12px 10px 1px rgba(40, 40, 43, 0.2);
+}
+.draw-ui > button {
+    width: 75%;
+    padding: 1em;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.draw-ui > input {
+    height: 3em;
+    width: 3em;
+    margin-top: 20px;
 }
 .slide-container {
     margin-top: auto;
@@ -49,6 +63,12 @@ html, body {
     border-right: 1px solid black;
     border-top: 1px solid black;
     margin: 20px;
+}
+.grid-elements {
+
+}
+.grid-elements-borderless {
+
 }
 .footer {
     display: flex;
