@@ -60,15 +60,16 @@ html, body {
     height: 600px;
     width: 600px;
     background-color: white;
-    border-right: 1px solid black;
-    border-top: 1px solid black;
     margin: 20px;
 }
-.grid-elements {
-
+.grid-element {
+    background-color: white;
+    outline: 1px solid black;
+    border-right: 1px;
+    border-top: 1px;
 }
-.grid-elements-borderless {
-
+.grid-element-borderless {
+    outline: none;
 }
 .footer {
     display: flex;

@@ -4,6 +4,7 @@ const btnColor = document.querySelector("#select-color");
 const btnErase = document.querySelector(".erase");
 const btnShade = document.querySelector(".shade");
 const btnLighten = document.querySelector(".lighten");
+const btnToggleGrid = document.querySelector(".toggle-grid");
 const grid = document.querySelector(".grid-draw-container");
 
 let darkMode = false;
@@ -13,6 +14,7 @@ let drawColor = "#000000";
 let slider = document.getElementById("myRange");
 let output = document.getElementById("size");
 let mouseDown = false;
+let drawMode = 0;
 
 
 /*
@@ -27,7 +29,7 @@ function createGrid(column, row) {
             gridElement = document.createElement('div');
             gridElement.className = "grid-element"
             //gridElement.id = `${x}-${y}`;
-            gridElement.style = "background-color: white; border: 1px solid black; border-right: 1px; border-top: 1px";
+            //gridElement.style = "background-color: white; border: 1px solid black; border-right: 1px; border-top: 1px";
             gridElement.style.gridRow = y + 1;
             gridElement.style.gridColumn = x + 1;
             gridElement.addEventListener('mouseover', draw);
@@ -69,16 +71,24 @@ function changeColor(e) {
 
 function draw(e) {
     if (e.type === 'mouseover' && !mouseDown) return;
-    e.target.style.backgroundColor = drawColor;
+    if (drawMode === 0) {
+        e.target.style.backgroundColor = drawColor;
+    }
+    else if (drawMode === -1) {
+        e.target.style.backgroundColor = e.target.style.backgroundColor;
+    }
+    else {
+        e.target.style.backgroundColor = "red";
+    }
     
 }
 
 function shade() {
-
+    drawMode = drawMode === -1 ? 0 : -1;
 }
 
-function lighten() {
-
+function lighten(e) {
+    drawMode = drawMode === 1 ? 0 : 1;
 }
 
 function erase() {
@@ -86,7 +96,11 @@ function erase() {
 }
 
 function toggleGrid() {
-    //swap out classs for grid and gridelements
+    let elems = document.getElementsByClassName("grid-element");
+    for (let i = 0; i < elems.length; i++){
+        elems[i].classList.toggle('grid-element-borderless');
+    }
+    
 }
 
 function setup() {
@@ -99,6 +113,9 @@ function setup() {
     btnReset.addEventListener("click", reset);
     btnColor.addEventListener("change", changeColor, false);
     btnErase.addEventListener("click", erase);
+    btnLighten.addEventListener("click", lighten);
+    btnShade.addEventListener("click", shade);
+    btnToggleGrid.addEventListener("click", toggleGrid);
     btnDarkMode.addEventListener("click", () => {
         if (darkMode) {
             document.querySelector(".main-flex-wrapper").style = "background-color: rgb(229, 231, 235)";
