@@ -19,8 +19,18 @@
                 <button class="lighten">Lighten</button>
                 <button class="erase">Erase</button>
                 <button class="toggle-grid">Toggle Grid</button>
-                <input type="color" class="color" id="select-color" name="select-color" value="#000000"></input>
-                <label for="select-color">Select Color</label>
+                <div class="color-selector-container">
+                    <div class="color-selector">
+                        <input type="color" id="select-erase-color" name="select-erase-color" value="#FFFFFF"></input>
+                        <label for="select-color">Erase Color</label>
+                    </div>
+                        
+                    <div class="color-selector">
+                        <input type="color" id="select-color" name="select-color" value="#000000"></input>
+                        <label for="select-color">Color</label>
+                    </div>
+                    
+                </div> 
                 <div class="slide-container">
                     <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
                     <p>Size: <span id="size"></span></p>

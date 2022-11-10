@@ -1,7 +1,8 @@
 const RANGE = 255;
 const btnDarkMode = document.querySelector(".header > #dark-mode ");
 const btnReset = document.querySelector(".reset");
-const btnColor = document.querySelector(".color");
+const btnColor = document.querySelector("#select-color");
+const btnEraseColor = document.querySelector("#select-erase-color");
 const btnShade = document.querySelector(".shade");
 const btnLighten = document.querySelector(".lighten");
 const btnErase = document.querySelector(".erase");
@@ -12,6 +13,7 @@ let darkMode = false;
 let currentRows = 32;
 let currentColumns = 32;
 let drawColor = "#000000";
+let eraseColor = "#FFFFFF";
 let slider = document.getElementById("myRange");
 let output = document.getElementById("size");
 let mouseDown = false;
@@ -73,8 +75,6 @@ const updateMode = (e) => {
     if (tempValue) modeMap.set("draw", true); // Set default draw to be true if disabling another draw function
 }
 
-
-
 /*
     Takes two numbers as input, the number of columns and rows desired. It then dynamically
     creates a grid inside of a container by adding the specified grid elements of class grid-element, 
@@ -134,7 +134,8 @@ function validateInput(input) {
 }
 
 function changeColor(e) {
-    drawColor = e.target.value;
+    if (e.target.id === "select-color") drawColor = e.target.value;
+    else if (e.target.id === "select-erase-color") eraseColor = e.target.value;
 }
 
 /*
@@ -143,7 +144,7 @@ function changeColor(e) {
 function draw(e) {
     if (e.type === 'mouseover' && !mouseDown) return;
     if (modeMap.get("draw")) e.target.style.backgroundColor = drawColor;
-    else if (modeMap.get("erase")) e.target.style.backgroundColor = "#FFFFFF";
+    else if (modeMap.get("erase")) e.target.style.backgroundColor = eraseColor;
     else if (modeMap.get("shade")) e.target.style.backgroundColor = adjustColor(e.target.style.backgroundColor, -5);
     else if (modeMap.get("lighten")) e.target.style.backgroundColor = adjustColor(e.target.style.backgroundColor, 5);
 }
@@ -235,6 +236,7 @@ function setup() {
     btnReset.addEventListener("click", reset);
     btnColor.addEventListener("change", changeColor, false);
     btnErase.addEventListener("click", updateMode);
+    btnEraseColor.addEventListener("change", changeColor, false);
     btnLighten.addEventListener("click", updateMode);
     btnShade.addEventListener("click", updateMode);
     btnToggleGrid.addEventListener("click", toggleGrid);

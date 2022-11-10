@@ -38,7 +38,7 @@ html, body {
     align-items: center;
     background-color:   rgb(171, 180, 188);
     border-radius: 10px;
-    box-shadow: 12px 12px 10px 1px rgba(40, 40, 43, 0.2);
+    box-shadow: 0px 0px 10px 1px rgba(40, 40, 43, 0.2);
 }
 .draw-ui > button {
     width: 75%;
@@ -60,6 +60,17 @@ html, body {
     margin-top: 20px;
     padding: 0;
     border-color: rgb(229, 231, 235);
+}
+.color-selector-container {
+    display: flex;
+    margin-top: 20px;
+}
+.color-selector {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+    text-align: center;
 }
 .slide-container {
     margin-top: auto;
